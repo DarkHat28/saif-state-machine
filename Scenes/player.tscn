@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://6lil8dyil7su"]
 
 [ext_resource type="Texture2D" uid="uid://b2yqwnvirnfud" path="res://Assets/Graphics/Sprites/01-King Human/Fall (78x58).png" id="1_fkybt"]
+[ext_resource type="Script" uid="uid://dyo7ochlxif5y" path="res://Scripts/Game/player.gd" id="1_gymyn"]
 [ext_resource type="Texture2D" uid="uid://cavtwntyx54ph" path="res://Assets/Graphics/Sprites/01-King Human/Idle (78x58).png" id="1_v0iea"]
 [ext_resource type="Texture2D" uid="uid://rdwfvw12mbx6" path="res://Assets/Graphics/Sprites/01-King Human/Ground (78x58).png" id="2_3smsa"]
 [ext_resource type="Texture2D" uid="uid://co6rpbwsp2k3c" path="res://Assets/Graphics/Sprites/01-King Human/Dead (78x58).png" id="2_8erm5"]
@@ -10,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://ct703xpvjcaq0" path="res://Assets/Graphics/Sprites/01-King Human/Door Out (78x58).png" id="4_tx1dd"]
 [ext_resource type="Texture2D" uid="uid://d3ec000fuhti5" path="res://Assets/Graphics/Sprites/01-King Human/Attack (78x58).png" id="6_8erm5"]
 [ext_resource type="Texture2D" uid="uid://b6fhjcxnra10a" path="res://Assets/Graphics/Sprites/01-King Human/Door In (78x58).png" id="8_f1ek2"]
+[ext_resource type="Script" uid="uid://dx4584c27j2sb" path="res://Scripts/SaifStateMachine/Saif_state_machine.gd" id="12_ukyrk"]
+[ext_resource type="Script" uid="uid://dgdselpkf1q3f" path="res://Scripts/SaifStateMachine/idle.gd" id="13_7dp3o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p1odr"]
 atlas = ExtResource("6_8erm5")
@@ -396,13 +399,25 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_v0iea"]
 radius = 7.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1993619805]
+[node name="Player" type="CharacterBody2D" unique_id=1993619805 groups=["PLAYER"]]
+script = ExtResource("1_gymyn")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1514539332]
+[node name="PlayerAnimation" type="AnimatedSprite2D" parent="." unique_id=1514539332]
+unique_name_in_owner = true
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_ukyrk")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.89876294
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1185725792]
 shape = SubResource("CircleShape2D_v0iea")
+
+[node name="Camera" type="Camera2D" parent="." unique_id=1489648949]
+
+[node name="SaifStateMachine" type="Node" parent="." unique_id=1811564526]
+script = ExtResource("12_ukyrk")
+metadata/_custom_type_script = "uid://dx4584c27j2sb"
+
+[node name="Idle" type="Node" parent="SaifStateMachine" unique_id=1529228698]
+script = ExtResource("13_7dp3o")

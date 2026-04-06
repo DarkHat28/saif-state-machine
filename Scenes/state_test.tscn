@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dxbmqau0evume"]
+
+[ext_resource type="Script" uid="uid://dx4584c27j2sb" path="res://Scripts/SaifStateMachine/Saif_state_machine.gd" id="1_s3u3o"]
+
+[node name="StateTest" type="Node2D" unique_id=2072314639]
+script = ExtResource("1_s3u3o")
