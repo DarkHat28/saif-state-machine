@@ -11,8 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://ct703xpvjcaq0" path="res://Assets/Graphics/Sprites/01-King Human/Door Out (78x58).png" id="4_tx1dd"]
 [ext_resource type="Texture2D" uid="uid://d3ec000fuhti5" path="res://Assets/Graphics/Sprites/01-King Human/Attack (78x58).png" id="6_8erm5"]
 [ext_resource type="Texture2D" uid="uid://b6fhjcxnra10a" path="res://Assets/Graphics/Sprites/01-King Human/Door In (78x58).png" id="8_f1ek2"]
-[ext_resource type="Script" uid="uid://dx4584c27j2sb" path="res://Scripts/SaifStateMachine/Saif_state_machine.gd" id="12_ukyrk"]
-[ext_resource type="Script" uid="uid://dgdselpkf1q3f" path="res://Scripts/SaifStateMachine/idle.gd" id="13_7dp3o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p1odr"]
 atlas = ExtResource("6_8erm5")
@@ -414,10 +412,3 @@ frame_progress = 0.89876294
 shape = SubResource("CircleShape2D_v0iea")
 
 [node name="Camera" type="Camera2D" parent="." unique_id=1489648949]
-
-[node name="SaifStateMachine" type="Node" parent="." unique_id=1811564526]
-script = ExtResource("12_ukyrk")
-metadata/_custom_type_script = "uid://dx4584c27j2sb"
-
-[node name="Idle" type="Node" parent="SaifStateMachine" unique_id=1529228698]
-script = ExtResource("13_7dp3o")

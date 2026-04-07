@@ -1,23 +1,38 @@
+@icon("res://Assets/Graphics/icons 16x16/expression.png")
 class_name SaifStateMachine
 extends Node
 
-#@export_category("State Master")
-@export var actor: Node2D
 
-#@export_category("State Machine")
-@export var states: Array[Node] = []  # Drag child nodes here
-@export var active_state: Node
+# References to essentials
+@export var actor: Node2D
 @export var initial_state: Node
+var active_state: Node
 var previous_state: Node
 
+# References to all states
+@export_group("States")
+@export var IDLE: SaifState
+#Add your desired states
+@export var RUN: SaifState
+@export var JUMP: SaifState
 
+
+
+
+
+
+
+## DONT TOUCH OR EDIT ANYTHING FROM BELOW CODE
+## DONT TOUCH OR EDIT ANYTHING FROM BELOW CODE
+## DONT TOUCH OR EDIT ANYTHING FROM BELOW CODE
+## DONT TOUCH OR EDIT ANYTHING FROM BELOW CODE
+## DONT TOUCH OR EDIT ANYTHING FROM BELOW CODE
 func _ready() -> void:
-	if states.size() == 0:
-		states = get_children()
-		if states.size() != null:
-			if initial_state == null:
-				active_state = initial_state
-				previous_state = initial_state
+	if initial_state == null:
+		initial_state = IDLE
+		active_state = initial_state
+		previous_state = initial_state
+	active_state._enter_state()
 
 
 func _process(delta: float) -> void:
@@ -29,8 +44,9 @@ func _physics_process(delta: float) -> void:
 
 func change_state(new_state: Node) -> void:
 	if active_state:
-		active_state.exit()
+		active_state.exit_state()
 	previous_state = active_state
 	active_state = new_state
-	active_state.enter()
 	print("Changed to: ", active_state.name)
+	active_state._enter_state()
+	print("New Active State _ready() Function Run")
