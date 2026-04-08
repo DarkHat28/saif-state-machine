@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="SaifStateMachine"
+config/name="Saif State Machine"
 run/main_scene="uid://cm6d4n0l86efu"
 config/features=PackedStringArray("4.6", "Mobile")
-config/icon="res://icon.svg"
+config/icon="uid://deka3igjuy5ak"
 
 [display]
 

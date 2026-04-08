@@ -11,42 +11,46 @@ var previous_state: Node
 
 # References to all states
 @export_group("States")
-@export var IDLE: SaifState
+@export var IDLE: SaifBaseState
 #Add your desired states
-@export var RUN: SaifState
-@export var JUMP: SaifState
+@export var RUN: SaifBaseState
+@export var JUMP: SaifBaseState
 
 
 
-
-
-
-
-## DONT TOUCH OR EDIT ANYTHING FROM BELOW CODE
-## DONT TOUCH OR EDIT ANYTHING FROM BELOW CODE
-## DONT TOUCH OR EDIT ANYTHING FROM BELOW CODE
-## DONT TOUCH OR EDIT ANYTHING FROM BELOW CODE
 ## DONT TOUCH OR EDIT ANYTHING FROM BELOW CODE
 func _ready() -> void:
+	if actor == null:
+		actor = owner
 	if initial_state == null:
 		initial_state = IDLE
-		active_state = initial_state
-		previous_state = initial_state
+	active_state = initial_state
+	previous_state = initial_state
 	active_state._enter_state()
 
 
 func _process(delta: float) -> void:
-	active_state.run_process(delta)
+	active_state.run_state_process(delta)
 
 func _physics_process(delta: float) -> void:
-	active_state.run_physics_process(delta)
-
+	active_state.run_state_physics_process(delta)
+	##print("Active State: ", active_state,name)
 
 func change_state(new_state: Node) -> void:
+	if not new_state:
+		push_error("Attempted to change to null state!")
+		return
 	if active_state:
-		active_state.exit_state()
+		active_state._exit_state()
 	previous_state = active_state
 	active_state = new_state
-	print("Changed to: ", active_state.name)
+	print("State changed: ", previous_state.name if previous_state else "None", " -> ", active_state.name)
 	active_state._enter_state()
-	print("New Active State _ready() Function Run")
+#func change_state(new_state: Node) -> void:
+	#if active_state:
+		#active_state._exit_state()
+	#previous_state = active_state
+	#active_state = new_state
+	#print("Changed to: ", active_state.name)
+	#active_state._enter_state()
+	#print("New Active State _ready() Function Run")
