@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://dgdselpkf1q3f" path="res://Scripts/SaifStateMachine/idle.gd" id="13_h4iuc"]
 [ext_resource type="Script" uid="uid://l0nvgkvrymak" path="res://Scripts/SaifStateMachine/run.gd" id="14_fd4e3"]
 [ext_resource type="Script" uid="uid://717m05gymq4g" path="res://Scripts/SaifStateMachine/jump.gd" id="15_h4iuc"]
+[ext_resource type="Script" uid="uid://dav358jiiwnrk" path="res://Scripts/SaifStateMachine/fall.gd" id="16_fd4e3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p1odr"]
 atlas = ExtResource("6_8erm5")
@@ -415,13 +416,20 @@ frame_progress = 0.89876294
 shape = SubResource("CircleShape2D_v0iea")
 
 [node name="Camera" type="Camera2D" parent="." unique_id=1489648949]
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_drag_margin = true
 
-[node name="SaifStateMachine" type="Node" parent="." unique_id=811260134 node_paths=PackedStringArray("actor", "initial_state", "IDLE", "RUN")]
+[node name="SaifStateMachine" type="Node" parent="." unique_id=811260134 node_paths=PackedStringArray("actor", "initial_state", "IDLE", "RUN", "JUMP", "FALL", "FLOAT")]
 script = ExtResource("12_7dp3o")
 actor = NodePath("..")
 initial_state = NodePath("Idle")
 IDLE = NodePath("Idle")
 RUN = NodePath("Run")
+JUMP = NodePath("Jump")
+FALL = NodePath("Fall")
+FLOAT = NodePath("Float")
 metadata/_custom_type_script = "uid://dx4584c27j2sb"
 
 [node name="Idle" type="Node" parent="SaifStateMachine" unique_id=1346254863 node_paths=PackedStringArray("player_animation")]
@@ -437,5 +445,17 @@ player_animation = NodePath("../../PlayerAnimation")
 [node name="Jump" type="Node" parent="SaifStateMachine" unique_id=2067884138 node_paths=PackedStringArray("player_animation")]
 script = ExtResource("15_h4iuc")
 state_animation = &"jump"
+player_animation = NodePath("../../PlayerAnimation")
+metadata/_custom_type_script = "uid://dgdselpkf1q3f"
+
+[node name="Fall" type="Node" parent="SaifStateMachine" unique_id=1146096634 node_paths=PackedStringArray("player_animation")]
+script = ExtResource("16_fd4e3")
+state_animation = &"fall"
+player_animation = NodePath("../../PlayerAnimation")
+metadata/_custom_type_script = "uid://dgdselpkf1q3f"
+
+[node name="Float" type="Node" parent="SaifStateMachine" unique_id=2016414558 node_paths=PackedStringArray("player_animation")]
+script = ExtResource("16_fd4e3")
+state_animation = &"fall"
 player_animation = NodePath("../../PlayerAnimation")
 metadata/_custom_type_script = "uid://dgdselpkf1q3f"

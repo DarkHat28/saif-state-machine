@@ -15,13 +15,18 @@ var previous_state: Node
 #Add your desired states
 @export var RUN: SaifBaseState
 @export var JUMP: SaifBaseState
+@export var FALL: SaifBaseState
+@export var FLOAT: SaifBaseState
 
 
 
 ## DONT TOUCH OR EDIT ANYTHING FROM BELOW CODE
 func _ready() -> void:
-	if actor == null:
+	if not actor:
+	#if actor == null:
 		actor = owner
+		#print("Actor Name: ", actor)
+		push_error("Actor not set in export of SaifStateMachine.")
 	if initial_state == null:
 		initial_state = IDLE
 	active_state = initial_state
@@ -40,17 +45,8 @@ func change_state(new_state: Node) -> void:
 	if not new_state:
 		push_error("Attempted to change to null state!")
 		return
-	if active_state:
-		active_state._exit_state()
 	previous_state = active_state
+	previous_state._exit_state()
 	active_state = new_state
-	print("State changed: ", previous_state.name if previous_state else "None", " -> ", active_state.name)
-	active_state._enter_state()
-#func change_state(new_state: Node) -> void:
-	#if active_state:
-		#active_state._exit_state()
-	#previous_state = active_state
-	#active_state = new_state
-	#print("Changed to: ", active_state.name)
-	#active_state._enter_state()
-	#print("New Active State _ready() Function Run")
+	new_state._enter_state()
+	print("State Changed: ",previous_state.name.to_upper(), " -> ", new_state.name.to_upper())

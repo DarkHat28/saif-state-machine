@@ -2,29 +2,29 @@ class_name Idle
 extends SaifBaseState
 
 
-# Write Input logic here If State Transition by Input
-func _handle_input(_event: InputEvent) -> void:
-	if actor.direction != 0.0:
-		print("Idle -> Run (input detected, direction = ", actor.direction, ")")
-		state_machine.change_state(state_machine.RUN)
+# Write State specific Input logic here
+func _handle_input(_event: InputEvent) -> void: pass
 
 # These below functions get called from parent class "SaifBaseState"
-func _state_process(_delta: float) -> void: # State Logic Code like Particles, Sound, Progress bar or any other UI update etc in process function
-	pass
+func _state_process(_delta: float) -> void: pass # State Logic Code like Particles, Sound, Progress bar or any other UI update etc in process function
 
-func _state_physics_process(delta: float) -> void:
+func _state_physics_process(_delta: float) -> void:
 	# Decelerate to a stop
 	actor.velocity.x = move_toward(actor.velocity.x, 0.0, actor.speed)
-	actor.add_gravity(delta)
+	#actor.add_gravity(delta)
 	actor.move_and_slide()
 
 func _state_transition(_delta: float) -> void: # Condition for State Change
-	pass
+	if not actor.is_on_floor():
+		state_machine.change_state(state_machine.FALL)
+	if actor.direction != 0.0:
+		state_machine.change_state(state_machine.RUN)
+	if Input.is_action_just_pressed(&"jump"):
+		state_machine.change_state(state_machine.JUMP)
 
 
-# These below functions get called from parent Node "SaifStateMachine"
-func _enter_state() -> void:
-	print("Entered Idle state")
+# This function gets called when Actor Enters State
+func _enter_state() -> void: pass
 
-func _exit_state() -> void:
-	print("Exited Idle state")
+# This function gets called when Actor Exits State
+func _exit_state() -> void: pass

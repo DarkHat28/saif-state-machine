@@ -2,24 +2,22 @@ class_name Jump
 extends SaifBaseState
 
 
-# Write Input logic here If State Transition by Input
-func _handle_input(_event: InputEvent) -> void:
-	pass
+func _handle_input(_event: InputEvent) -> void: pass
 
 # These below functions get called from parent class "SaifBaseState"
-func _state_process(_delta: float) -> void: # State Logic Code like Particles, Sound, Progress bar or any other UI update etc in process function
-	pass
+func _state_process(_delta: float) -> void: pass # State Logic Code like Particles, Sound, Progress bar or any other UI update etc in process function
 
 func _state_physics_process(_delta: float) -> void:
+	#if Input.is_action_just_pressed("jump") and actor.is_on_floor():
+		#actor.velocity.y = actor.jump_velocity
 	pass
 
 func _state_transition(_delta: float) -> void: # Condition for State Change
-	pass
-
+	if actor.is_on_floor(): #  actor.direction == 0.0
+		state_machine.change_state(state_machine.IDLE)
 
 # These below functions get called from parent Node "SaifStateMachine"
 func _enter_state() -> void:
-	pass
+	actor.velocity.y = actor.jump_velocity
 
-func _exit_state() -> void:
-	pass
+func _exit_state() -> void: pass

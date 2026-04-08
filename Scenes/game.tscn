@@ -937,4 +937,4 @@ position = Vector2(1491, -188)
 enter_door = false
 
 [node name="Player" parent="." unique_id=1993619805 instance=ExtResource("4_3dryh")]
-position = Vector2(-415, 771)
+position = Vector2(363, 601)
