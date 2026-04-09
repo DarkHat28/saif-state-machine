@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://l0nvgkvrymak" path="res://Scripts/SaifStateMachine/run.gd" id="14_fd4e3"]
 [ext_resource type="Script" uid="uid://717m05gymq4g" path="res://Scripts/SaifStateMachine/jump.gd" id="15_h4iuc"]
 [ext_resource type="Script" uid="uid://dav358jiiwnrk" path="res://Scripts/SaifStateMachine/fall.gd" id="16_fd4e3"]
+[ext_resource type="FontFile" uid="uid://bmyn0b7s273nc" path="res://Assets/Fonts/Playgum.ttf" id="17_qqcod"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p1odr"]
 atlas = ExtResource("6_8erm5")
@@ -402,6 +403,23 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_v0iea"]
 radius = 7.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qqcod"]
+bg_color = Color(0.072842695, 0.072842605, 0.072842635, 0.78431374)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 1, 0, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 6.0
+expand_margin_top = 6.0
+expand_margin_right = 6.0
+expand_margin_bottom = 6.0
+
 [node name="Player" type="CharacterBody2D" unique_id=1993619805 groups=["PLAYER"]]
 script = ExtResource("1_gymyn")
 
@@ -410,7 +428,7 @@ position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_ukyrk")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.89876294
+frame_progress = 0.80703473
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1185725792]
 shape = SubResource("CircleShape2D_v0iea")
@@ -421,7 +439,7 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_drag_margin = true
 
-[node name="SaifStateMachine" type="Node" parent="." unique_id=811260134 node_paths=PackedStringArray("actor", "initial_state", "IDLE", "RUN", "JUMP", "FALL", "FLOAT")]
+[node name="SaifStateMachine" type="Node" parent="." unique_id=811260134 node_paths=PackedStringArray("actor", "initial_state", "IDLE", "RUN", "JUMP", "FALL")]
 script = ExtResource("12_7dp3o")
 actor = NodePath("..")
 initial_state = NodePath("Idle")
@@ -429,33 +447,45 @@ IDLE = NodePath("Idle")
 RUN = NodePath("Run")
 JUMP = NodePath("Jump")
 FALL = NodePath("Fall")
-FLOAT = NodePath("Float")
 metadata/_custom_type_script = "uid://dx4584c27j2sb"
 
 [node name="Idle" type="Node" parent="SaifStateMachine" unique_id=1346254863 node_paths=PackedStringArray("player_animation")]
+unique_name_in_owner = true
 script = ExtResource("13_h4iuc")
 state_animation = &"idle"
 player_animation = NodePath("../../PlayerAnimation")
 
 [node name="Run" type="Node" parent="SaifStateMachine" unique_id=510030548 node_paths=PackedStringArray("player_animation")]
+unique_name_in_owner = true
 script = ExtResource("14_fd4e3")
 state_animation = &"run"
 player_animation = NodePath("../../PlayerAnimation")
 
 [node name="Jump" type="Node" parent="SaifStateMachine" unique_id=2067884138 node_paths=PackedStringArray("player_animation")]
+unique_name_in_owner = true
 script = ExtResource("15_h4iuc")
 state_animation = &"jump"
 player_animation = NodePath("../../PlayerAnimation")
 metadata/_custom_type_script = "uid://dgdselpkf1q3f"
 
 [node name="Fall" type="Node" parent="SaifStateMachine" unique_id=1146096634 node_paths=PackedStringArray("player_animation")]
+unique_name_in_owner = true
 script = ExtResource("16_fd4e3")
 state_animation = &"fall"
 player_animation = NodePath("../../PlayerAnimation")
 metadata/_custom_type_script = "uid://dgdselpkf1q3f"
 
-[node name="Float" type="Node" parent="SaifStateMachine" unique_id=2016414558 node_paths=PackedStringArray("player_animation")]
-script = ExtResource("16_fd4e3")
-state_animation = &"fall"
-player_animation = NodePath("../../PlayerAnimation")
-metadata/_custom_type_script = "uid://dgdselpkf1q3f"
+[node name="UI" type="CanvasLayer" parent="." unique_id=1498468519]
+
+[node name="StateDebuggerLabel" type="Label" parent="UI" unique_id=1859563881]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 30)
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 210.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("17_qqcod")
+theme_override_styles/normal = SubResource("StyleBoxFlat_qqcod")
+vertical_alignment = 1
