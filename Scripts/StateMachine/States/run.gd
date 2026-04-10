@@ -1,9 +1,9 @@
-class_name Run
+#class_name Run
 extends SaifBaseState
 
 
-@export var speed: float = 300.0
-@export var acceleration: float = 150.0
+@export var speed: float = 150.0
+@export var acceleration: float = 40.0
 
 
 func _state_physics_process(_delta: float) -> void:

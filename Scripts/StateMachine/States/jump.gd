@@ -1,12 +1,12 @@
-class_name Jump
+#class_name Jump
 extends SaifBaseState
 
 
-@export var _jump_velocity: float = -400.0
+@export var _jump_velocity: float = -350.0
 @export var air_speed_modifier: float = 0.5
 
-@onready var idle: Idle = %Idle
-@onready var run: Run = %Run
+@onready var idle: SaifBaseState = %Idle
+@onready var run: SaifBaseState = %Run
 
 
 @onready var air_acceleration: float = air_speed_modifier * run.acceleration # Caching Calculation here for performance and reduce redundant calculations

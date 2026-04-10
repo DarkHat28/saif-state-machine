@@ -1,7 +1,7 @@
-class_name Idle
+#class_name Idle
 extends SaifBaseState
 
-@export var deceleration: float = 200.0
+@export var deceleration: float = 80.0
 
 
 func _state_physics_process(_delta: float) -> void:

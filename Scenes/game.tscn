@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dxhce0hkjq62d" path="res://Scripts/Game/game.gd" id="1_wowpa"]
 [ext_resource type="Texture2D" uid="uid://btpdhn2ck8rp0" path="res://Assets/Graphics/Sprites/14-TileSets/Decorations (32x32).png" id="2_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://c2f67pgjr7ifd" path="res://Scenes/door.tscn" id="3_wrm1d"]
-[ext_resource type="PackedScene" uid="uid://6lil8dyil7su" path="res://Scenes/player.tscn" id="4_3dryh"]
+[ext_resource type="PackedScene" uid="uid://dv5kp10yeabkt" path="res://Scenes/player.tscn" id="5_wowpa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ebmjs"]
 texture = ExtResource("1_ebmjs")
@@ -928,13 +928,9 @@ tile_set = SubResource("TileSet_i6g32")
 [node name="EnterDoor" parent="WorldObjects" unique_id=801349664 instance=ExtResource("3_wrm1d")]
 position = Vector2(-467, 770)
 
-[node name="DoorExitDoor" parent="WorldObjects" unique_id=2030473018 instance=ExtResource("3_wrm1d")]
-position = Vector2(-322, 770)
-enter_door = false
-
 [node name="ExitDoor" parent="WorldObjects" unique_id=1186865717 instance=ExtResource("3_wrm1d")]
 position = Vector2(1491, -188)
 enter_door = false
 
-[node name="Player" parent="." unique_id=1993619805 instance=ExtResource("4_3dryh")]
-position = Vector2(363, 601)
+[node name="Player" parent="." unique_id=1993619805 instance=ExtResource("5_wowpa")]
+position = Vector2(-359, -250)

@@ -1,209 +1,214 @@
-[gd_scene format=3 uid="uid://6lil8dyil7su"]
+[gd_scene format=3 uid="uid://dv5kp10yeabkt"]
 
-[ext_resource type="Texture2D" uid="uid://b2yqwnvirnfud" path="res://Assets/Graphics/Sprites/01-King Human/Fall (78x58).png" id="1_fkybt"]
-[ext_resource type="Script" uid="uid://dyo7ochlxif5y" path="res://Scripts/Game/player.gd" id="1_gymyn"]
-[ext_resource type="Texture2D" uid="uid://cavtwntyx54ph" path="res://Assets/Graphics/Sprites/01-King Human/Idle (78x58).png" id="1_v0iea"]
-[ext_resource type="Texture2D" uid="uid://rdwfvw12mbx6" path="res://Assets/Graphics/Sprites/01-King Human/Ground (78x58).png" id="2_3smsa"]
-[ext_resource type="Texture2D" uid="uid://co6rpbwsp2k3c" path="res://Assets/Graphics/Sprites/01-King Human/Dead (78x58).png" id="2_8erm5"]
-[ext_resource type="Texture2D" uid="uid://d3o7clql275ja" path="res://Assets/Graphics/Sprites/01-King Human/Run (78x58).png" id="2_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://dyyd2w88o2ba8" path="res://Assets/Graphics/Sprites/01-King Human/Hit (78x58).png" id="2_x3wgy"]
-[ext_resource type="Texture2D" uid="uid://i21pohefd5xc" path="res://Assets/Graphics/Sprites/01-King Human/Jump (78x58).png" id="4_3smsa"]
-[ext_resource type="Texture2D" uid="uid://ct703xpvjcaq0" path="res://Assets/Graphics/Sprites/01-King Human/Door Out (78x58).png" id="4_tx1dd"]
-[ext_resource type="Texture2D" uid="uid://d3ec000fuhti5" path="res://Assets/Graphics/Sprites/01-King Human/Attack (78x58).png" id="6_8erm5"]
-[ext_resource type="Texture2D" uid="uid://b6fhjcxnra10a" path="res://Assets/Graphics/Sprites/01-King Human/Door In (78x58).png" id="8_f1ek2"]
-[ext_resource type="Script" uid="uid://dx4584c27j2sb" path="res://Scripts/SaifStateMachine/Saif_state_machine.gd" id="12_7dp3o"]
-[ext_resource type="Script" uid="uid://dgdselpkf1q3f" path="res://Scripts/SaifStateMachine/idle.gd" id="13_h4iuc"]
-[ext_resource type="Script" uid="uid://l0nvgkvrymak" path="res://Scripts/SaifStateMachine/run.gd" id="14_fd4e3"]
-[ext_resource type="Script" uid="uid://717m05gymq4g" path="res://Scripts/SaifStateMachine/jump.gd" id="15_h4iuc"]
-[ext_resource type="Script" uid="uid://dav358jiiwnrk" path="res://Scripts/SaifStateMachine/fall.gd" id="16_fd4e3"]
-[ext_resource type="FontFile" uid="uid://bmyn0b7s273nc" path="res://Assets/Fonts/Playgum.ttf" id="17_qqcod"]
+[ext_resource type="Script" uid="uid://dyo7ochlxif5y" path="res://Scripts/Game/player.gd" id="1_j8dxb"]
+[ext_resource type="Texture2D" uid="uid://d3ec000fuhti5" path="res://Assets/Graphics/Sprites/01-King Human/Attack (78x58).png" id="2_ydb2d"]
+[ext_resource type="Texture2D" uid="uid://co6rpbwsp2k3c" path="res://Assets/Graphics/Sprites/01-King Human/Dead (78x58).png" id="3_c0iqc"]
+[ext_resource type="Texture2D" uid="uid://b6fhjcxnra10a" path="res://Assets/Graphics/Sprites/01-King Human/Door In (78x58).png" id="4_cugjo"]
+[ext_resource type="Texture2D" uid="uid://ct703xpvjcaq0" path="res://Assets/Graphics/Sprites/01-King Human/Door Out (78x58).png" id="5_gtvwj"]
+[ext_resource type="Texture2D" uid="uid://b2yqwnvirnfud" path="res://Assets/Graphics/Sprites/01-King Human/Fall (78x58).png" id="6_87c6h"]
+[ext_resource type="Texture2D" uid="uid://rdwfvw12mbx6" path="res://Assets/Graphics/Sprites/01-King Human/Ground (78x58).png" id="7_uq41y"]
+[ext_resource type="Texture2D" uid="uid://dyyd2w88o2ba8" path="res://Assets/Graphics/Sprites/01-King Human/Hit (78x58).png" id="8_wsi6p"]
+[ext_resource type="Texture2D" uid="uid://cavtwntyx54ph" path="res://Assets/Graphics/Sprites/01-King Human/Idle (78x58).png" id="9_3trqt"]
+[ext_resource type="Texture2D" uid="uid://i21pohefd5xc" path="res://Assets/Graphics/Sprites/01-King Human/Jump (78x58).png" id="10_yvesf"]
+[ext_resource type="Texture2D" uid="uid://d3o7clql275ja" path="res://Assets/Graphics/Sprites/01-King Human/Run (78x58).png" id="11_m0caq"]
+[ext_resource type="Script" uid="uid://cwxfftbxfba3h" path="res://Scripts/StateMachine/StateMachine/state_master.gd" id="12_ydb2d"]
+[ext_resource type="Script" uid="uid://dgdselpkf1q3f" path="res://Scripts/StateMachine/States/idle.gd" id="13_b0uso"]
+[ext_resource type="Script" uid="uid://l0nvgkvrymak" path="res://Scripts/StateMachine/States/run.gd" id="14_v1skv"]
+[ext_resource type="Script" uid="uid://717m05gymq4g" path="res://Scripts/StateMachine/States/jump.gd" id="15_ksxdy"]
+[ext_resource type="Script" uid="uid://dav358jiiwnrk" path="res://Scripts/StateMachine/States/fall.gd" id="16_0s1ld"]
+[ext_resource type="FontFile" uid="uid://bmyn0b7s273nc" path="res://Assets/Fonts/Playgum.ttf" id="17_mt4ys"]
+[ext_resource type="Script" uid="uid://b6l6t3vfsc6i6" path="res://Scripts/StateMachine/StateMachine/movement_state_machine.gd" id="18_c0iqc"]
+[ext_resource type="Script" uid="uid://dwcyhvsnv6c8c" path="res://Scripts/StateMachine/StateMachine/attack_state_machine.gd" id="18_cugjo"]
+[ext_resource type="Script" uid="uid://cjoioeqfptdcf" path="res://Scripts/StateMachine/States/rest.gd" id="19_cugjo"]
+[ext_resource type="Script" uid="uid://cqlu6di2cmgit" path="res://Scripts/StateMachine/States/sword.gd" id="20_gtvwj"]
+[ext_resource type="Script" uid="uid://cfagqx5v32wc2" path="res://Scripts/StateMachine/States/magic.gd" id="21_87c6h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p1odr"]
-atlas = ExtResource("6_8erm5")
+atlas = ExtResource("2_ydb2d")
 region = Rect2(14, 0, 66, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0gysh"]
-atlas = ExtResource("6_8erm5")
+atlas = ExtResource("2_ydb2d")
 region = Rect2(90, 0, 66, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vfarp"]
-atlas = ExtResource("6_8erm5")
+atlas = ExtResource("2_ydb2d")
 region = Rect2(166, 0, 66, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y6uwr"]
-atlas = ExtResource("2_8erm5")
+atlas = ExtResource("3_c0iqc")
 region = Rect2(0, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_83xs0"]
-atlas = ExtResource("2_8erm5")
+atlas = ExtResource("3_c0iqc")
 region = Rect2(78, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ypfnu"]
-atlas = ExtResource("2_8erm5")
+atlas = ExtResource("3_c0iqc")
 region = Rect2(156, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xuaoq"]
-atlas = ExtResource("2_8erm5")
+atlas = ExtResource("3_c0iqc")
 region = Rect2(234, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wohnl"]
-atlas = ExtResource("8_f1ek2")
+atlas = ExtResource("4_cugjo")
 region = Rect2(0, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_36dho"]
-atlas = ExtResource("8_f1ek2")
+atlas = ExtResource("4_cugjo")
 region = Rect2(78, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yh6i2"]
-atlas = ExtResource("8_f1ek2")
+atlas = ExtResource("4_cugjo")
 region = Rect2(156, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nv4vc"]
-atlas = ExtResource("8_f1ek2")
+atlas = ExtResource("4_cugjo")
 region = Rect2(234, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8gxox"]
-atlas = ExtResource("8_f1ek2")
+atlas = ExtResource("4_cugjo")
 region = Rect2(312, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_11gg7"]
-atlas = ExtResource("8_f1ek2")
+atlas = ExtResource("4_cugjo")
 region = Rect2(390, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qpa8y"]
-atlas = ExtResource("8_f1ek2")
+atlas = ExtResource("4_cugjo")
 region = Rect2(468, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sbwqj"]
-atlas = ExtResource("8_f1ek2")
+atlas = ExtResource("4_cugjo")
 region = Rect2(546, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xwi16"]
-atlas = ExtResource("4_tx1dd")
+atlas = ExtResource("5_gtvwj")
 region = Rect2(0, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sweqm"]
-atlas = ExtResource("4_tx1dd")
+atlas = ExtResource("5_gtvwj")
 region = Rect2(78, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ph33w"]
-atlas = ExtResource("4_tx1dd")
+atlas = ExtResource("5_gtvwj")
 region = Rect2(156, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ldla"]
-atlas = ExtResource("4_tx1dd")
+atlas = ExtResource("5_gtvwj")
 region = Rect2(234, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r7t2e"]
-atlas = ExtResource("4_tx1dd")
+atlas = ExtResource("5_gtvwj")
 region = Rect2(312, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nmr2m"]
-atlas = ExtResource("4_tx1dd")
+atlas = ExtResource("5_gtvwj")
 region = Rect2(390, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ax3m3"]
-atlas = ExtResource("4_tx1dd")
+atlas = ExtResource("5_gtvwj")
 region = Rect2(468, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3vlem"]
-atlas = ExtResource("4_tx1dd")
+atlas = ExtResource("5_gtvwj")
 region = Rect2(546, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l6n3p"]
-atlas = ExtResource("1_fkybt")
+atlas = ExtResource("6_87c6h")
 region = Rect2(0, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ijsl"]
-atlas = ExtResource("2_3smsa")
+atlas = ExtResource("7_uq41y")
 region = Rect2(0, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_olqyp"]
-atlas = ExtResource("2_x3wgy")
+atlas = ExtResource("8_wsi6p")
 region = Rect2(0, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wpjfl"]
-atlas = ExtResource("2_x3wgy")
+atlas = ExtResource("8_wsi6p")
 region = Rect2(78, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v0iea"]
-atlas = ExtResource("1_v0iea")
+atlas = ExtResource("9_3trqt")
 region = Rect2(0, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cvnsp"]
-atlas = ExtResource("1_v0iea")
+atlas = ExtResource("9_3trqt")
 region = Rect2(78, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
-atlas = ExtResource("1_v0iea")
+atlas = ExtResource("9_3trqt")
 region = Rect2(156, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vgqql"]
-atlas = ExtResource("1_v0iea")
+atlas = ExtResource("9_3trqt")
 region = Rect2(234, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fkybt"]
-atlas = ExtResource("1_v0iea")
+atlas = ExtResource("9_3trqt")
 region = Rect2(312, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x3wgy"]
-atlas = ExtResource("1_v0iea")
+atlas = ExtResource("9_3trqt")
 region = Rect2(390, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3smsa"]
-atlas = ExtResource("1_v0iea")
+atlas = ExtResource("9_3trqt")
 region = Rect2(468, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8erm5"]
-atlas = ExtResource("1_v0iea")
+atlas = ExtResource("9_3trqt")
 region = Rect2(546, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f1ek2"]
-atlas = ExtResource("1_v0iea")
+atlas = ExtResource("9_3trqt")
 region = Rect2(624, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tx1dd"]
-atlas = ExtResource("1_v0iea")
+atlas = ExtResource("9_3trqt")
 region = Rect2(702, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gymyn"]
-atlas = ExtResource("1_v0iea")
+atlas = ExtResource("9_3trqt")
 region = Rect2(780, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bi64h"]
-atlas = ExtResource("4_3smsa")
+atlas = ExtResource("10_yvesf")
 region = Rect2(0, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pu2lt"]
-atlas = ExtResource("2_cvnsp")
+atlas = ExtResource("11_m0caq")
 region = Rect2(0, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ukyrk"]
-atlas = ExtResource("2_cvnsp")
+atlas = ExtResource("11_m0caq")
 region = Rect2(78, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7dp3o"]
-atlas = ExtResource("2_cvnsp")
+atlas = ExtResource("11_m0caq")
 region = Rect2(156, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h4iuc"]
-atlas = ExtResource("2_cvnsp")
+atlas = ExtResource("11_m0caq")
 region = Rect2(234, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fd4e3"]
-atlas = ExtResource("2_cvnsp")
+atlas = ExtResource("11_m0caq")
 region = Rect2(312, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qqcod"]
-atlas = ExtResource("2_cvnsp")
+atlas = ExtResource("11_m0caq")
 region = Rect2(390, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_igrcy"]
-atlas = ExtResource("2_cvnsp")
+atlas = ExtResource("11_m0caq")
 region = Rect2(468, 0, 64, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fs7ks"]
-atlas = ExtResource("2_cvnsp")
+atlas = ExtResource("11_m0caq")
 region = Rect2(546, 0, 64, 58)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ukyrk"]
@@ -421,7 +426,7 @@ expand_margin_right = 6.0
 expand_margin_bottom = 6.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1993619805 groups=["PLAYER"]]
-script = ExtResource("1_gymyn")
+script = ExtResource("1_j8dxb")
 
 [node name="PlayerAnimation" type="AnimatedSprite2D" parent="." unique_id=1514539332]
 position = Vector2(0, -8)
@@ -439,41 +444,62 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_drag_margin = true
 
-[node name="SaifStateMachine" type="Node" parent="." unique_id=811260134 node_paths=PackedStringArray("actor", "initial_state", "IDLE", "RUN", "JUMP", "FALL")]
-script = ExtResource("12_7dp3o")
-actor = NodePath("..")
-initial_state = NodePath("Idle")
+[node name="StateMaster" type="Node" parent="." unique_id=667487106 node_paths=PackedStringArray("movement_state_machine", "attack_state_machine")]
+script = ExtResource("12_ydb2d")
+movement_state_machine = NodePath("MovementStateMachine")
+attack_state_machine = NodePath("AttackStateMachine")
+
+[node name="MovementStateMachine" type="Node" parent="StateMaster" unique_id=1580944247 node_paths=PackedStringArray("IDLE", "RUN", "JUMP", "FALL", "state_master", "actor", "initial_state")]
+script = ExtResource("18_c0iqc")
 IDLE = NodePath("Idle")
 RUN = NodePath("Run")
 JUMP = NodePath("Jump")
 FALL = NodePath("Fall")
-metadata/_custom_type_script = "uid://dx4584c27j2sb"
+state_master = NodePath("..")
+actor = NodePath("../..")
+initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="SaifStateMachine" unique_id=1346254863 node_paths=PackedStringArray("player_animation")]
+[node name="Idle" type="Node" parent="StateMaster/MovementStateMachine" unique_id=1346254863 node_paths=PackedStringArray("player_animation")]
 unique_name_in_owner = true
-script = ExtResource("13_h4iuc")
+script = ExtResource("13_b0uso")
 state_animation = &"idle"
-player_animation = NodePath("../../PlayerAnimation")
+player_animation = NodePath("../../../PlayerAnimation")
 
-[node name="Run" type="Node" parent="SaifStateMachine" unique_id=510030548 node_paths=PackedStringArray("player_animation")]
+[node name="Run" type="Node" parent="StateMaster/MovementStateMachine" unique_id=510030548 node_paths=PackedStringArray("player_animation")]
 unique_name_in_owner = true
-script = ExtResource("14_fd4e3")
+script = ExtResource("14_v1skv")
 state_animation = &"run"
-player_animation = NodePath("../../PlayerAnimation")
+player_animation = NodePath("../../../PlayerAnimation")
 
-[node name="Jump" type="Node" parent="SaifStateMachine" unique_id=2067884138 node_paths=PackedStringArray("player_animation")]
+[node name="Jump" type="Node" parent="StateMaster/MovementStateMachine" unique_id=2067884138 node_paths=PackedStringArray("player_animation")]
 unique_name_in_owner = true
-script = ExtResource("15_h4iuc")
+script = ExtResource("15_ksxdy")
 state_animation = &"jump"
-player_animation = NodePath("../../PlayerAnimation")
-metadata/_custom_type_script = "uid://dgdselpkf1q3f"
+player_animation = NodePath("../../../PlayerAnimation")
 
-[node name="Fall" type="Node" parent="SaifStateMachine" unique_id=1146096634 node_paths=PackedStringArray("player_animation")]
+[node name="Fall" type="Node" parent="StateMaster/MovementStateMachine" unique_id=1146096634 node_paths=PackedStringArray("player_animation")]
 unique_name_in_owner = true
-script = ExtResource("16_fd4e3")
+script = ExtResource("16_0s1ld")
 state_animation = &"fall"
-player_animation = NodePath("../../PlayerAnimation")
-metadata/_custom_type_script = "uid://dgdselpkf1q3f"
+player_animation = NodePath("../../../PlayerAnimation")
+
+[node name="AttackStateMachine" type="Node" parent="StateMaster" unique_id=200445558 node_paths=PackedStringArray("REST", "SWORD", "MAGIC", "state_master", "actor", "initial_state")]
+script = ExtResource("18_cugjo")
+REST = NodePath("Rest")
+SWORD = NodePath("Sword")
+MAGIC = NodePath("Magic")
+state_master = NodePath("..")
+actor = NodePath("../..")
+initial_state = NodePath("Rest")
+
+[node name="Rest" type="Node" parent="StateMaster/AttackStateMachine" unique_id=818088766]
+script = ExtResource("19_cugjo")
+
+[node name="Sword" type="Node" parent="StateMaster/AttackStateMachine" unique_id=1682145295]
+script = ExtResource("20_gtvwj")
+
+[node name="Magic" type="Node" parent="StateMaster/AttackStateMachine" unique_id=770060049]
+script = ExtResource("21_87c6h")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1498468519]
 
@@ -486,6 +512,6 @@ offset_right = 210.0
 offset_bottom = 40.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("17_qqcod")
+theme_override_fonts/font = ExtResource("17_mt4ys")
 theme_override_styles/normal = SubResource("StyleBoxFlat_qqcod")
 vertical_alignment = 1

@@ -2,15 +2,17 @@
 class_name SaifBaseState
 extends Node
 
-#signal state_entered()
-#signal state_exited()
+signal state_entered(state: SaifBaseState)
+signal state_exited(state: SaifBaseState)
+#signal state_entered(state: String)
+#signal state_exited(state: String)
 
 @export var state_animation: StringName
 @export var player_animation: Node
 
-@onready var state_machine: SaifStateMachine = get_parent() as SaifStateMachine
-@onready var actor: Node2D = state_machine.actor
-
+@onready var state_machine: StateMachine = get_parent() as StateMachine
+@onready var state_master: StateMaster = state_machine.state_master as StateMaster
+@onready var actor: Node = state_machine.actor
 
 ## Add Extra Node refrence here, based on requirements...
 #@onready var player_animation: AnimatedSprite2D = %PlayerAnimation
@@ -56,11 +58,15 @@ func _state_transition(_delta: float) -> void: pass # Write Transition logic whe
 
 # These functions called from class SaifStateMachine
 func _enter_state() -> void:
-	print("Entered state -> ", self.name.to_upper())
+	state_entered.emit(self)
+	#state_entered.emit(self.name.to_lower())
 	_play_animation()
+	#print("Entered state -> ", self.name.to_upper())
 
 func _exit_state() -> void:
-	print("\n", "Exited state <- ", self.name.to_upper())
+	state_exited.emit(self)
+	#state_exited.emit(self.name.to_lower())
+	#print("\n", "Exited state <- ", self.name.to_upper())
 
 
 
