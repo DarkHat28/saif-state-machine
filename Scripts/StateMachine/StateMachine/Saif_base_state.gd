@@ -2,13 +2,13 @@
 class_name SaifBaseState
 extends Node
 
+
 signal state_entered(state: SaifBaseState)
 signal state_exited(state: SaifBaseState)
-#signal state_entered(state: String)
-#signal state_exited(state: String)
+
 
 @export var state_animation: StringName
-@export var player_animation: Node
+@export var animation_player: Node
 
 @onready var state_machine: StateMachine = get_parent() as StateMachine
 @onready var state_master: StateMaster = state_machine.state_master as StateMaster
@@ -18,10 +18,11 @@ signal state_exited(state: SaifBaseState)
 #@onready var player_animation: AnimatedSprite2D = %PlayerAnimation
 
 func _ready() -> void:
+	add_to_group("SAIF_STATE")
 	# Error checking
 	if state_animation == "":
 		push_warning("State animation not assigned for current State: ", name.to_upper())
-	if not player_animation:
+	if not animation_player:
 		push_warning("Player animation node not assigned in state: ", name.to_upper())
 	if not state_machine:
 		push_error("State machine parent not found for state: ", name.to_upper())
@@ -42,32 +43,27 @@ func run_state_physics_process(delta: float) -> void:
 
 
 func _play_animation() -> void: # Write Animation logic here
-	if player_animation and state_animation:
-		player_animation.play(state_animation)
-		#print("Playing Animation: ", state_animation)
+	if state_animation and animation_player:
+		animation_player.play(state_animation)
 	else:
-		push_warning("Animation skipped: player_animation or state_animation missing in ", name.to_upper())
+		push_warning("Animation skipped: animation_player or state_animation missing in ", name.to_upper())
 
+
+# These functions called from class SaifStateMachine
+func _enter_state() -> void:
+	state_entered.emit(self)
+	_play_animation()
+	#print("Entered state -> ", self.name.to_upper())
+
+func _exit_state() -> void:
+	state_exited.emit(self)
+	#print("\n", "Exited state <- ", self.name.to_upper())
 
 ## Overridable methods : These functions called from class SaifBaseState
 func _handle_input(_event: InputEvent) -> void: pass # Write Input logic here If State Transition by Input
 func _state_process(_delta: float) -> void: pass # Write State logic here,that active state needs method _process()
 func _state_physics_process(_delta: float) -> void: pass # Write State logic here,that active state needs method _physics_process()
 func _state_transition(_delta: float) -> void: pass # Write Transition logic where state changes based on condition
-
-
-# These functions called from class SaifStateMachine
-func _enter_state() -> void:
-	state_entered.emit(self)
-	#state_entered.emit(self.name.to_lower())
-	_play_animation()
-	#print("Entered state -> ", self.name.to_upper())
-
-func _exit_state() -> void:
-	state_exited.emit(self)
-	#state_exited.emit(self.name.to_lower())
-	#print("\n", "Exited state <- ", self.name.to_upper())
-
 
 
 ## HELPER FUNCTIONS
