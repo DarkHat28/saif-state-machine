@@ -7,8 +7,9 @@ signal state_entered(state: SaifBaseState)
 signal state_exited(state: SaifBaseState)
 
 
-@export var state_animation: StringName
 @export var animation_player: Node
+@export var state_animations: Array[StringName] = []
+
 
 @onready var state_machine: StateMachine = get_parent() as StateMachine
 @onready var state_master: StateMaster = state_machine.state_master as StateMaster
@@ -19,13 +20,18 @@ signal state_exited(state: SaifBaseState)
 
 func _ready() -> void:
 	add_to_group("SAIF_STATE")
+	
 	# Error checking
-	if state_animation == "":
-		push_warning("State animation not assigned for current State: ", name.to_upper())
+	if not (state_machine):
+		push_error("State Machine Node not found for state: ", name.to_upper())
+	if not (get_parent() as StateMachine):
+		push_error("Parent Node is not 'State Machine Node' for state: ", name.to_upper())
 	if not animation_player:
-		push_warning("Player animation node not assigned in state: ", name.to_upper())
-	if not state_machine:
-		push_error("State machine parent not found for state: ", name.to_upper())
+		push_warning("Animation Player Node not assigned on state: ", name.to_upper())
+	if not state_animations:
+		push_warning("Array state_animations not populated of State: ", name.to_upper())
+	if state_animations == null:
+		push_warning("Animation skipped: state_animations missing of State: ", name.to_upper())
 
 
 ## Input function for each State Class gets called from here
@@ -43,10 +49,14 @@ func run_state_physics_process(delta: float) -> void:
 
 
 func _play_animation() -> void: # Write Animation logic here
-	if state_animation and animation_player:
-		animation_player.play(state_animation)
-	else:
-		push_warning("Animation skipped: animation_player or state_animation missing in ", name.to_upper())
+	if state_animations.size() == 0 and animation_player:
+		push_warning("Animation skipped: animation_player or state_animations missing in ", name.to_upper())
+	elif state_animations.size() == 1:
+		if (animation_player is AnimatedSprite2D) or (animation_player is AnimatedSprite3D):
+			if animation_player.sprite_frames.has_animation(state_animations[0]):
+				animation_player.play(state_animations[0])
+		elif (animation_player is AnimationPlayer) and animation_player.has_animation():
+			animation_player.play(state_animations[0])
 
 
 # These functions called from class SaifStateMachine

@@ -433,7 +433,6 @@ position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_ukyrk")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.26749468
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1185725792]
 shape = SubResource("CircleShape2D_v0iea")
@@ -462,28 +461,26 @@ initial_state = NodePath("Idle")
 [node name="Idle" type="Node" parent="StateMaster/MovementStateMachine" unique_id=1346254863 node_paths=PackedStringArray("animation_player")]
 unique_name_in_owner = true
 script = ExtResource("13_b0uso")
-state_animation = &"idle"
 animation_player = NodePath("../../../PlayerAnimation")
+state_animations = Array[StringName]([&"idle"])
 
 [node name="Run" type="Node" parent="StateMaster/MovementStateMachine" unique_id=510030548 node_paths=PackedStringArray("animation_player")]
 unique_name_in_owner = true
 script = ExtResource("14_v1skv")
-speed = null
-acceleration = null
-state_animation = &"run"
 animation_player = NodePath("../../../PlayerAnimation")
+state_animations = Array[StringName]([&"run"])
 
 [node name="Jump" type="Node" parent="StateMaster/MovementStateMachine" unique_id=2067884138 node_paths=PackedStringArray("animation_player")]
 unique_name_in_owner = true
 script = ExtResource("15_ksxdy")
-state_animation = &"jump"
 animation_player = NodePath("../../../PlayerAnimation")
+state_animations = Array[StringName]([&"jump"])
 
 [node name="Fall" type="Node" parent="StateMaster/MovementStateMachine" unique_id=1146096634 node_paths=PackedStringArray("animation_player")]
 unique_name_in_owner = true
 script = ExtResource("16_0s1ld")
-state_animation = &"fall"
 animation_player = NodePath("../../../PlayerAnimation")
+state_animations = Array[StringName]([&"fall"])
 
 [node name="AttackStateMachine" type="Node" parent="StateMaster" unique_id=200445558 node_paths=PackedStringArray("REST", "SWORD", "MAGIC", "state_master", "actor", "initial_state")]
 script = ExtResource("18_cugjo")
@@ -496,9 +493,12 @@ initial_state = NodePath("Rest")
 
 [node name="Rest" type="Node" parent="StateMaster/AttackStateMachine" unique_id=818088766]
 script = ExtResource("19_cugjo")
+state_animations = Array[StringName]([&"rest"])
 
-[node name="Sword" type="Node" parent="StateMaster/AttackStateMachine" unique_id=1682145295]
+[node name="Sword" type="Node" parent="StateMaster/AttackStateMachine" unique_id=1682145295 node_paths=PackedStringArray("animation_player")]
 script = ExtResource("20_gtvwj")
+animation_player = NodePath("../../../PlayerAnimation")
+state_animations = Array[StringName]([&"attack"])
 
 [node name="Magic" type="Node" parent="StateMaster/AttackStateMachine" unique_id=770060049]
 script = ExtResource("21_87c6h")

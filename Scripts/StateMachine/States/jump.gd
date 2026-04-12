@@ -26,7 +26,7 @@ func _state_physics_process(delta: float) -> void:
 func _state_transition() -> void: # Condition for State Change
 	if actor.velocity.y >= 0.0: change_state(state_machine.FALL)
 
-# These below functions get called from parent Node "SaifStateMachine"
+# These below functions gets called from parent Node "SaifStateMachine"
 func _enter_state() -> void:
 	super()
 	actor.velocity.y = _jump_velocity
