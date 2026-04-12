@@ -30,11 +30,13 @@ func _connect_all_state_signals() -> void:
 		# Connect Signal: "state_entered"
 		if each_state.has_signal("state_entered"):
 			each_state.state_entered.connect(_on_state_entered)
+			print(each_state, " has been connected to func '_on_state_entered'")
 		else:
 			push_warning('"state_entered" Signal is not connected of State: ', each_state.name.to_upper())
 		# Connect Signal: "state_exited"
 		if each_state.has_signal("state_exited"):
 			each_state.state_exited.connect(_on_state_exited)
+			print(each_state, " has been connected to func '_on_state_exited'")
 		else:
 			push_warning('"state_exited" Signal is not connected of State: ', each_state.name.to_upper())
 

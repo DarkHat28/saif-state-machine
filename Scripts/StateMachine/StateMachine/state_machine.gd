@@ -14,9 +14,7 @@ var previous_state: SaifBaseState
 ## DONT TOUCH OR EDIT ANYTHING FROM BELOW CODE
 func _ready() -> void:
 	if not actor:
-		#actor = owner
-		#print("Actor Name: ", actor)
-		push_warning("Actor not set in export of StateMachine: ", self.name)
+		push_error("Actor not set in export of StateMachine: ", self.name)
 	if not initial_state:
 		push_error("'Initial State' not set in export of StateMachine: ", self.name)
 		return

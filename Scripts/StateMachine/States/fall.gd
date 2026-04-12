@@ -21,6 +21,6 @@ func _state_physics_process(delta: float) -> void:
 	actor.add_gravity(delta)
 	actor.move_and_slide()
 
-func _state_transition(_delta: float) -> void:
+func _state_transition() -> void:
 	if actor.is_on_floor():
 		change_state(state_machine.IDLE)

@@ -468,6 +468,8 @@ animation_player = NodePath("../../../PlayerAnimation")
 [node name="Run" type="Node" parent="StateMaster/MovementStateMachine" unique_id=510030548 node_paths=PackedStringArray("animation_player")]
 unique_name_in_owner = true
 script = ExtResource("14_v1skv")
+speed = null
+acceleration = null
 state_animation = &"run"
 animation_player = NodePath("../../../PlayerAnimation")
 

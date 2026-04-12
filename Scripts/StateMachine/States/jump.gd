@@ -23,7 +23,7 @@ func _state_physics_process(delta: float) -> void:
 	actor.add_gravity(delta)
 	actor.move_and_slide()
 
-func _state_transition(_delta: float) -> void: # Condition for State Change
+func _state_transition() -> void: # Condition for State Change
 	if actor.velocity.y >= 0.0: change_state(state_machine.FALL)
 
 # These below functions get called from parent Node "SaifStateMachine"

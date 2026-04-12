@@ -39,7 +39,7 @@ func run_state_process(delta: float) -> void:
 
 func run_state_physics_process(delta: float) -> void:
 	_state_physics_process(delta)
-	_state_transition(delta)
+	_state_transition()
 
 
 func _play_animation() -> void: # Write Animation logic here
@@ -63,7 +63,7 @@ func _exit_state() -> void:
 func _handle_input(_event: InputEvent) -> void: pass # Write Input logic here If State Transition by Input
 func _state_process(_delta: float) -> void: pass # Write State logic here,that active state needs method _process()
 func _state_physics_process(_delta: float) -> void: pass # Write State logic here,that active state needs method _physics_process()
-func _state_transition(_delta: float) -> void: pass # Write Transition logic where state changes based on condition
+func _state_transition() -> void: pass # Write Transition logic where state changes based on condition
 
 
 ## HELPER FUNCTIONS
