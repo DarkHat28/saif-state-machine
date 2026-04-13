@@ -5,7 +5,7 @@ extends Node
 
 signal state_entered(state: SaifBaseState)
 signal state_exited(state: SaifBaseState)
-
+#signal one_shot_animation_finished(state: SaifBaseState)
 
 @export var animation_player: Node
 @export var state_animations: Array[StringName] = []
@@ -20,7 +20,9 @@ signal state_exited(state: SaifBaseState)
 
 func _ready() -> void:
 	add_to_group("SAIF_STATE")
-	
+	if animation_player:
+		animation_player.animation_finished.connect(_on_current_state_animation_finished)
+
 	# Error checking
 	if not (state_machine):
 		push_error("State Machine Node not found for state: ", name.to_upper())
@@ -52,22 +54,28 @@ func _play_animation() -> void: # Write Animation logic here
 	if state_animations.size() == 0 and animation_player:
 		push_warning("Animation skipped: animation_player or state_animations missing in ", name.to_upper())
 	elif state_animations.size() == 1:
+		## Logic for AnimatedSprite2D or AnimatedSprite3D Node
 		if (animation_player is AnimatedSprite2D) or (animation_player is AnimatedSprite3D):
+			#if animation_player.animation != state_animations[0]: # and animation_player.is_playing():
 			if animation_player.sprite_frames.has_animation(state_animations[0]):
 				animation_player.play(state_animations[0])
+		## Logic for AnimationPlayer Node
 		elif (animation_player is AnimationPlayer) and animation_player.has_animation():
+			#if animation_player.current_animation != state_animations[0]: # and animation_player.is_playing():
 			animation_player.play(state_animations[0])
-
 
 # These functions called from class SaifStateMachine
 func _enter_state() -> void:
 	state_entered.emit(self)
 	_play_animation()
-	#print("Entered state -> ", self.name.to_upper())
 
 func _exit_state() -> void:
+	#if animation_player and animation_player.is_playing():
+		#animation_player.stop()
 	state_exited.emit(self)
-	#print("\n", "Exited state <- ", self.name.to_upper())
+
+func _on_current_state_animation_finished():
+	print("Animation ended")
 
 ## Overridable methods : These functions called from class SaifBaseState
 func _handle_input(_event: InputEvent) -> void: pass # Write Input logic here If State Transition by Input
@@ -79,3 +87,12 @@ func _state_transition() -> void: pass # Write Transition logic where state chan
 ## HELPER FUNCTIONS
 func change_state(state: Node) -> void:
 	state_machine.change_state(state)
+
+func is_animation_finished(animation: StringName = &"attack") -> bool:
+	if not animation_player:
+		return false
+	if animation_player is AnimatedSprite2D or animation_player is AnimatedSprite3D:
+		return not animation_player.is_playing() and animation_player.animation == animation
+	elif animation_player is AnimationPlayer:
+		return not animation_player.is_playing() and animation_player.current_animation == animation
+	return false

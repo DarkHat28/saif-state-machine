@@ -28,5 +28,5 @@ func _state_transition() -> void: # Condition for State Change
 
 # These below functions gets called from parent Node "SaifStateMachine"
 func _enter_state() -> void:
-	super()
 	actor.velocity.y = _jump_velocity
+	super()

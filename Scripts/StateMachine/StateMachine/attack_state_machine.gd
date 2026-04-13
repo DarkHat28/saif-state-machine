@@ -4,7 +4,7 @@ extends StateMachine
 
 
 ## References to all states
-@export var REST: SaifBaseState
+@export var NONE: SaifBaseState
 @export var SWORD: SaifBaseState
 @export var MAGIC: SaifBaseState
 
@@ -22,7 +22,6 @@ func _ready() -> void:
 	print("==============================\nStarting weapon: ", Weapon.keys()[current_weapon], "\n==============================\n")
 
 func _input(event: InputEvent) -> void:
-	## This is how you can cross check between two state machines active states and put your logic
 	## This is how you can cross check between two state machines active states and put your logic
 	if movement_state_machine.active_state in [movement_state_machine.JUMP, movement_state_machine.FALL]:
 		print("Weapon cannot be changed while Airborne")
@@ -50,13 +49,3 @@ func cycle_weapon_backward() -> void:
 func on_weapon_changed() -> void:
 	print("\n==============================\nWeapon changed to: ", Weapon.keys()[current_weapon], "\n==============================\n")
 	# You may add visual effects, sound, or change attack behavior here
-
-
-func attack() -> void:
-	match current_weapon:
-		Weapon.NONE:
-			print("Punch!")
-		Weapon.SWORD:
-			print("Slash!")
-		Weapon.MAGIC:
-			print("Cast fireball!")

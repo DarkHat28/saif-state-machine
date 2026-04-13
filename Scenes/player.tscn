@@ -314,7 +314,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2ijsl")
 }],
-"loop": true,
+"loop": false,
 "name": &"ground",
 "speed": 5.0
 }, {
@@ -431,7 +431,7 @@ script = ExtResource("1_j8dxb")
 [node name="PlayerAnimation" type="AnimatedSprite2D" parent="." unique_id=1514539332]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_ukyrk")
-animation = &"idle"
+animation = &"attack"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1185725792]
@@ -482,18 +482,17 @@ script = ExtResource("16_0s1ld")
 animation_player = NodePath("../../../PlayerAnimation")
 state_animations = Array[StringName]([&"fall"])
 
-[node name="AttackStateMachine" type="Node" parent="StateMaster" unique_id=200445558 node_paths=PackedStringArray("REST", "SWORD", "MAGIC", "state_master", "actor", "initial_state")]
+[node name="AttackStateMachine" type="Node" parent="StateMaster" unique_id=200445558 node_paths=PackedStringArray("NONE", "SWORD", "MAGIC", "state_master", "actor", "initial_state")]
 script = ExtResource("18_cugjo")
-REST = NodePath("Rest")
+NONE = NodePath("None")
 SWORD = NodePath("Sword")
 MAGIC = NodePath("Magic")
 state_master = NodePath("..")
 actor = NodePath("../..")
-initial_state = NodePath("Rest")
+initial_state = NodePath("None")
 
-[node name="Rest" type="Node" parent="StateMaster/AttackStateMachine" unique_id=818088766]
+[node name="None" type="Node" parent="StateMaster/AttackStateMachine" unique_id=818088766]
 script = ExtResource("19_cugjo")
-state_animations = Array[StringName]([&"rest"])
 
 [node name="Sword" type="Node" parent="StateMaster/AttackStateMachine" unique_id=1682145295 node_paths=PackedStringArray("animation_player")]
 script = ExtResource("20_gtvwj")
