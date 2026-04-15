@@ -74,14 +74,12 @@ func _exit_state() -> void:
 		#animation_player.stop()
 	state_exited.emit(self)
 
-func _on_current_state_animation_finished():
-	print("Animation ended")
-
 ## Overridable methods : These functions called from class SaifBaseState
 func _handle_input(_event: InputEvent) -> void: pass # Write Input logic here If State Transition by Input
 func _state_process(_delta: float) -> void: pass # Write State logic here,that active state needs method _process()
 func _state_physics_process(_delta: float) -> void: pass # Write State logic here,that active state needs method _physics_process()
 func _state_transition() -> void: pass # Write Transition logic where state changes based on condition
+func _on_current_state_animation_finished(): pass # Few State like Sword State has one shot Attack animation and then this function gets triggered when animation finished.
 
 
 ## HELPER FUNCTIONS

@@ -14,5 +14,5 @@ func _state_transition() -> void: # Condition for State Change
 				change_state(state_machine.NONE)
 
 func _on_current_state_animation_finished():
-	print("Animation ended and Starting new animation of MovementStateMachine State Animation")
+	print("Sword Attack Animation ended and Starting new animation of MovementStateMachine State Animation")
 	state_master.movement_state_machine.active_state._play_animation()

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 
+
 ## Global Variables for States add below...
 var direction: float = 0
 
